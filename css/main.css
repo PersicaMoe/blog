@@ -1914,7 +1914,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4e9524;
+  background: #ffc73c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2886,11 +2886,15 @@ hr {
   }
 }
 body {
-  background-image: url("/images/background.jpg");
+  background-image: url("../images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 .main-inner {
+  margin-top: 60px;
+  padding: 60px 60px 60px 60px;
+  background: #fff;
   opacity: 0.9;
+  min-height: 500px;
 }
