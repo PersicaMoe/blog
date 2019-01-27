@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fblog%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[H1 一级标题H2 二级标题H3 三级标题H4 四级标题H5 五级标题H6 六级标题 bold italic粗体 _斜体_bold italicbold italicbold italic又粗又斜 strikethrough删除线 1234567#include &lt;iostream&gt;using namespace std;int main()&#123; cout &lt;&lt; "HELLO WORLD!" &lt;&lt; endl; return 0;&#125; unordered list 1 无序列表 1 unordered list 2 无序列表 2 unordered list 3 无序列表 3 ordered list 有序列表 ordered list Link 链接 quote引用 The quick brown fox jumps over the lazy dog.]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+</search>
