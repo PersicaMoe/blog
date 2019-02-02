@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[字符串算法]]></title>
+    <url>%2Fblog%2Fstring-algo%2F</url>
+    <content type="text"><![CDATA[字符串相关的算法是OI重要考点。 KMP定义字符串 S：待匹配串/主串 字符串 T：模式串 求：S中是否出现T，如果出现，出现几次（重叠/不重叠）？ 算法暴力Knuth-Morris-Pratt思想分析模式串前缀和后缀相等的长度（border），即next[i] S与T匹配时通过next[i]找到新位置 代码123456789101112131415161718inline void getnext()&#123; int j; for(int i=2;t[i];++i)&#123; j=next[i-1]; while(j and t[j+1]!=t[i])j=next[j]; if(t[j+1]==t[i])++j; next[i]=j; &#125;&#125; inline void kmp()&#123; int j=0,ans=0; for(int i=1;s[i];++i)&#123; while(j!=-1 and s[i]!=t[j+1])j=next[j]; ++j; if(j==l)++ans; &#125;&#125; ex-KMP定义求：S的所有后缀 与 T 的最长公共前缀 的长度 算法暴力Z Algorithm, aka. ex-KMP 求z[i]，其中z[i]表示T[i]的后缀与T的最长公共前缀长度 z[1]=Tn，其中Tn=${abs(T)}$ z[2]暴力匹配 1234567891011121314a=2;for(int i=3;i&lt;=Tn;++i)&#123; int p=a+emp[a]-1; int ti=i-a+1; int x=z[ti]; if(i+x-1 &lt; p)emp[i]=x; else &#123; j=max(0,p-i+1); while(i+j &lt;= Tn and t[j+1] == t[i+1])++j; z[i]=j; &#125; a=i;&#125; Manacher算法暴力DP中心查找manacherTrieAC-automationSurfix ArraySurfix Tree]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>算法</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2Fblog%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[H1 一级标题H2 二级标题H3 三级标题H4 四级标题H5 五级标题H6 六级标题 bold italic粗体 _斜体_bold italicbold italicbold italic又粗又斜 strikethrough删除线 1234567#include &lt;iostream&gt;using namespace std;int main()&#123; cout &lt;&lt; "HELLO WORLD!" &lt;&lt; endl; return 0;&#125; unordered list 1 无序列表 1 unordered list 2 无序列表 2 unordered list 3 无序列表 3 ordered list 有序列表 ordered list Link 链接 quote引用 The quick brown fox jumps over the lazy dog.]]></content>
+    <content type="text"><![CDATA[测试用 H1 一级标题H2 二级标题H3 三级标题H4 四级标题H5 五级标题H6 六级标题 bold italic粗体 _斜体_bold italicbold italicbold italic又粗又斜 strikethrough删除线 1234567#include &lt;iostream&gt;using namespace std;int main()&#123; cout &lt;&lt; "HELLO WORLD!" &lt;&lt; endl; return 0;&#125; unordered list 1 无序列表 1 unordered list 2 无序列表 2 unordered list 3 无序列表 3 ordered list 有序列表 ordered list Link 链接 quote引用 The quick brown fox jumps over the lazy dog.]]></content>
       <categories>
         <category>测试</category>
       </categories>
