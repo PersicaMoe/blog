@@ -1,16 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[字符串算法]]></title>
-    <url>%2Fblog%2Fstring-algo%2F</url>
-    <content type="text"><![CDATA[字符串相关的算法是OI重要考点。 KMP定义字符串 S：待匹配串/主串 字符串 T：模式串 求：S中是否出现T，如果出现，出现几次（重叠/不重叠）？ 算法暴力Knuth-Morris-Pratt思想分析模式串前缀和后缀相等的长度（border），即next[i] S与T匹配时通过next[i]找到新位置 代码123456789101112131415161718inline void getnext()&#123; int j; for(int i=2;t[i];++i)&#123; j=next[i-1]; while(j and t[j+1]!=t[i])j=next[j]; if(t[j+1]==t[i])++j; next[i]=j; &#125;&#125; inline void kmp()&#123; int j=0,ans=0; for(int i=1;s[i];++i)&#123; while(j!=-1 and s[i]!=t[j+1])j=next[j]; ++j; if(j==l)++ans; &#125;&#125; ex-KMP定义求：S的所有后缀 与 T 的最长公共前缀 的长度 算法暴力Z Algorithm, aka. ex-KMP 求z[i]，其中z[i]表示T[i]的后缀与T的最长公共前缀长度 z[1]=Tn，其中Tn=${abs(T)}$ z[2]暴力匹配 1234567891011121314a=2;for(int i=3;i&lt;=Tn;++i)&#123; int p=a+emp[a]-1; int ti=i-a+1; int x=z[ti]; if(i+x-1 &lt; p)emp[i]=x; else &#123; j=max(0,p-i+1); while(i+j &lt;= Tn and t[j+1] == t[i+1])++j; z[i]=j; &#125; a=i;&#125; Manacher算法暴力DP中心查找manacher Trie AC-automation Surfix Array Surfix Tree]]></content>
+    <title><![CDATA[后缀数组]]></title>
+    <url>%2Fblog%2Fsurfix-array%2F</url>
+    <content type="text"><![CDATA[后缀数组是解决字符串相关问题的有力工具 定义 surfix[i]表示第i个后缀 SA[i]表示按地点序排在第i名的后缀 rank[i]表示第i个后缀的名次 height[i]表示第i名后缀和第i-1名后缀的最长公共前缀 算法：倍增Step1. 求SA和rank s[i]表示i出现的次数，处理后s[i]表示其前缀和通过s[i]求后缀的位次（从后向前分配） Step2. 求heightStep3. 应用]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
-        <tag>算法</tag>
         <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>后缀数组</tag>
+        <tag>SA</tag>
+        <tag>surfix-array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AC自动机]]></title>
+    <url>%2Fblog%2FAC-automation%2F</url>
+    <content type="text"><![CDATA[AC自动机是一种简化的有限状态自动机，用于解决多串匹配问题 用途特点多模式串匹配，在字典树上跑KMP 实现要点构建fail指针 步骤： Step1. 创建字典树 Step2. 建立fail指针 bfs 要创建A节点的失败指针，应该在A的父节点FA进行处理 检查fail[FA]-&gt;ch[A]是否存在 存在：fail[A]=fail[FA]-&gt;ch[A] 不存在：检查fail[fail[FA]] 根节点的fail是NULL 根节点的子节点的fail是根节点 优化Step3. 匹配 失败：通过fail指针跳转，继续匹配 成功：统计所有以当前字符结尾的单词]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>AC-automation</tag>
+        <tag>AC自动机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[trie/字典树]]></title>
+    <url>%2Fblog%2Ftrie%2F</url>
+    <content type="text"><![CDATA[定义 单词技术 子节点指针表 缺点：占用空间大 123456789struct node &#123; int cnt; node *ch[26]; node()&#123; cnt=0; for(int i=0;i&lt;26;++i)ch[i]=NULL; &#125;&#125; 插入单词 提前创建树根 循环插入每个字母 1234root = new node;node *p = root;for(int i=1;i&lt;=n;++i)p = p-&gt;ch[str[i]-'a'] ? p-&gt;ch[str[i]-'a'] : p-&gt;ch[str[i]-'a'] = new node;p-&gt;cnt++; 优化 手写内存池]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>字符串</tag>
+        <tag>数据结构</tag>
+        <tag>trie</tag>
+        <tag>字典树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[manacher]]></title>
+    <url>%2Fblog%2Fmanacher%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Z Algorithm]]></title>
+    <url>%2Fblog%2FZ-algorithm%2F</url>
+    <content type="text"><![CDATA[Z Algorithm, 国内又称拓展KMP，即ex-KMP 定义 求：S的所有后缀 与 T 的最长公共前缀 的长度 算法: Z Algorithm, aka. ex-KMP思想求z[i]，其中z[i]表示T[i]的后缀与T的最长公共前缀长度 z[1]=Tn，其中Tn=${abs(T)}$ z[2]暴力匹配 代码12345678910111213a=2;for(int i=3;i&lt;=Tn;++i)&#123; int p=a+emp[a]-1; int ti=i-a+1; int x=z[ti]; if(i+x-1 &lt; p)emp[i]=x; else &#123; j=max(0,p-i+1); while(i+j &lt;= Tn and t[j+1] == t[i+1])++j; z[i]=j; &#125; a=i;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>Z-algo</tag>
+        <tag>ex-KMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[KMP算法]]></title>
+    <url>%2Fblog%2FKMP%2F</url>
+    <content type="text"><![CDATA[KMP是解决单串匹配问题的经典算法 定义 字符串 S：待匹配串/主串 字符串 T：模式串 单串匹配问题：求S中是否出现T，如果出现，出现几次（重叠/不重叠）？ 算法: Knuth-Morris-Pratt思想 分析模式串前缀和后缀相等的长度（border），即next[i] S与T匹配时通过next[i]找到新位置 代码1234567891011121314151617inline void getnext()&#123; int j; for(int i=2;t[i];++i)&#123; j=next[i-1]; while(j and t[j+1]!=t[i])j=next[j]; if(t[j+1]==t[i])++j; next[i]=j; &#125;&#125;inline void kmp()&#123; int j=0,ans=0; for(int i=1;s[i];++i)&#123; while(j!=-1 and s[i]!=t[j+1])j=next[j]; ++j; if(j==l)++ans; &#125;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>KMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[字符串算法]]></title>
+    <url>%2Fblog%2Fstring-algo%2F</url>
+    <content type="text"><![CDATA[字符串相关的算法是OI重要考点。 KMP Z Algorithm, aka. ex-KMP Manacher trie/字典树 AC自动机 后缀数组]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>汇总</tag>
       </tags>
   </entry>
   <entry>
